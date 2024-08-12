@@ -1,0 +1,8 @@
+hyperrefoptions:
+  - linktoc=all
+  - pdfwindowui
+  # - hypertexnames=false
+
+urlcolor: blue
+linkcolor: darkgray
+

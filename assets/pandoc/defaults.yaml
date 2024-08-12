@@ -1,0 +1,48 @@
+verbosity: INFO
+fail-if-warnings: false
+log-file: ${.}/../../pandoc.log
+
+pdf-engine: xelatex
+
+metadata-files:
+  - ${.}/yaml/a4.yaml
+  - ${.}/yaml/colored_admonitions.yaml
+  - ${.}/yaml/font.yaml
+  - ${.}/yaml/code.yaml
+  - ${.}/yaml/links.yaml
+  - ${.}/yaml/toc.yaml
+  - ${.}/yaml/linked_refs.yaml
+  - ${.}/yaml/numbered_eqs.yaml
+  - ${.}/yaml/includes.yaml
+
+include-in-header:
+  - ${.}/tex/colored_admonitions.tex
+  - ${.}/tex/centered_figs.tex
+  - ${.}/tex/deep_bullet_lists.tex
+  - ${.}/tex/arrows.tex
+  - ${.}/tex/fancy_header.tex
+  - ${.}/tex/htwgreen.tex
+  - ${.}/tex/start_ch_on_new_pg.tex
+  - ${.}/tex/soft_wrapped_code.tex
+  - ${.}/tex/footnotes_link_back.tex
+
+include-before-body:
+  - ${.}/tex/eq_numbering_per_sec.tex
+
+filters:
+  - pandoc-include
+  - ${.}/filters/diagram.lua
+  - ${.}/filters/annotate.py
+  - ${.}/filters/code-format.py
+  - pandoc-latex-environment
+  - pandoc-displaymath2equation
+  - citeproc
+
+syntax-definition:
+  - ${.}/syntax/cabal.xml
+  - ${.}/syntax/ghci.xml
+  - ${.}/syntax/terminal.xml
+
+citeproc: true
+csl: ${.}/citations/ieee.csl
+bibliography: ${.}/citations/citations.bib

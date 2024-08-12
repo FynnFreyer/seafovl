@@ -1,0 +1,77 @@
+% define admonition styles
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% define box colors
+\usepackage{xcolor}
+
+%\definecolor{info}{HTML}{e9c46a}
+
+\definecolor{aside}{HTML}{264653}
+\colorlet{aside-light}{aside!10}
+
+\definecolor{example}{HTML}{2a9d8f}
+\colorlet{example-light}{example!10}
+
+\definecolor{info}{HTML}{0077b6}
+\colorlet{info-light}{info!10}
+
+\definecolor{warning}{HTML}{f4a261}
+\colorlet{warning-light}{warning!10}
+
+\definecolor{danger}{HTML}{e76f51}
+\colorlet{danger-light}{danger!10}
+
+% set common options, doesn't affect nested boxes
+\tcbset{
+    parbox=false,  % make paragraph spacing normal
+    skin=enhanced,  % enable tikz code for graphics
+    top=0mm,  % less distance between title and text
+    boxsep=2ex,  % more padding
+}
+
+\newtcolorbox{aside-box}{
+    title=\large{\textbf{Anmerkung}},
+    colbacktitle=aside,
+    colback=aside-light,
+    %colback=gray!10!white,
+    %colbacktitle=gray!40!black,
+    colframe=black
+}
+
+\newtcolorbox{info-box}{
+    title=\large{\textbf{Information}},
+    colbacktitle=info,
+    colback=info-light,
+    %colback=cyan!10!white,
+    %colbacktitle=cyan!60!black,
+    colframe=black
+}
+
+\newtcolorbox{warning-box}{
+    title=\large{\textbf{Achtung}},
+    colbacktitle=warning,
+    colback=warning-light,
+    %colback=orange!10!white,
+    %colbacktitle=orange!80!black,
+    colframe=black
+}
+
+\newtcolorbox{danger-box}{
+    title=\large{\textbf{Vorsicht}},
+    colbacktitle=danger,
+    colback=danger-light,
+    %colback=red!10!white,
+    %colbacktitle=red!75!black,
+    colframe=black
+}
+
+\newtcolorbox[auto counter,number within=section]{example-box}{
+    title=\large{\textbf{Beispiel \thetcbcounter}},
+    colbacktitle=example,
+    colback=example-light,
+    %colback=blue!10!white,
+    %colbacktitle=blue!60!black,
+    colframe=black
+}
+

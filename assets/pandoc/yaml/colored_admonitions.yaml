@@ -1,0 +1,9 @@
+---
+pandoc-latex-environment:
+  tcolorbox: [box]
+  info-box: [info]
+  warning-box: [warning]
+  danger-box: [danger]
+  aside-box: [aside]
+  example-box: [example]
+---

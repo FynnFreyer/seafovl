@@ -1,0 +1,13 @@
+% needs to be loaded after \usepackage{hyperref},
+% so this needs to go into include-before-body
+\numberwithin{equation}{subsection}
+
+% patch \@startsection for equation numbering per (sub-) section
+% https://tex.stackexchange.com/a/232052
+% requires \usepackage{etoolbox} to be available, which has to be loaded in the preamble
+\makeatletter
+\patchcmd{\@startsection}% <cmd>
+  {\if@noskipsec}% <search>
+  {\csgdef{theequation}{\csname the#1\endcsname.\arabic{equation}}\if@noskipsec}% <replace>
+  {}{}% <success><failure>
+\makeatother

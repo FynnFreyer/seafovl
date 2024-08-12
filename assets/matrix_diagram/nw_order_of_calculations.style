@@ -1,0 +1,140 @@
+canvas {
+  height = 600
+  width = 500
+}
+
+colors {
+  color none = rgba(0., 0., 0., 0.)
+  color matrix = #023e8a
+  color cell = #00b4d8
+  color red = #dc2f02
+}
+
+cells {
+  scalar size = 80
+  scalar padding = size / 10
+  scalar paddedSize = size + padding
+  scalar paddedMid = paddedSize / 2
+}
+
+forall Matrix M
+where Dim(M, m, n) {
+  scalar M.rows = m
+  scalar M.cols = n
+  
+  M.shape = Rectangle {
+    fillColor: colors.matrix
+    cornerRadius: cells.padding / 2
+
+    -- center: (canvas.width, canvas.height) / 2
+    center: (0, 0)
+    height: cells.paddedSize * m + cells.padding * 2
+    width: cells.paddedSize * n + cells.padding * 2
+}
+
+  -- compute x,y of top left corner
+  vec4 corners = rectPts (M.shape)
+  M.x = corners[1][0] + cells.padding
+  M.y = corners[1][1] - cells.padding
+}
+
+forall Matrix M
+where RowLabel(M, i, l) {
+  scalar v = M.y - cells.paddedMid - ((i - 1) * cells.paddedSize)
+  Equation {
+    string: l
+    center: (M.x - cells.paddedMid, v)
+  }
+}
+
+forall Matrix M
+where ColLabel(M, j, l) {
+  scalar h = M.x + cells.paddedMid + ((j - 1) * cells.paddedSize)
+  Equation {
+    string: l
+    center: (h, M.y + cells.paddedMid)
+  }
+}
+
+
+forall repeatable Cell c; Matrix M
+where Elem(c, M, i, j) {
+  -- compute horizontal/vertical coordinates h/v for each cell
+  scalar h = M.x + cells.paddedMid + ((j - 1) * cells.paddedSize)
+  scalar v = M.y - cells.paddedMid - ((i - 1) * cells.paddedSize)
+
+  c.shape = Rectangle {
+    fillColor: colors.cell
+    cornerRadius: cells.padding
+
+    center: (h, v)
+    width: cells.size
+    height: cells.size
+  }
+
+  c.text = Equation {
+    string: TeXify (c.label)
+    center: c.shape.center
+  }
+
+  layer c.shape above M.shape
+  layer c.text above c.shape
+}
+
+forall Cell c1; Cell c2; Arrow q
+where q := Step(c1, c2) {
+  vec2 mid1 = c1.shape.center
+  vec2 mid2 = c2.shape.center
+  vec2 direction = normalize(mid2 - mid1)
+  
+  scalar offset = cells.paddedMid / 2
+  vec2 offsetVec = direction * offset
+  
+  q.line = Line {
+    name: ""
+    endArrowhead: "straight"
+    start: mid1 + offsetVec
+    end: mid2 - offsetVec
+  }
+}
+
+forall Cell c1; Cell c2; Arrow q
+where q := Arc(c1, c2) {
+  vec2 mid1 = c1.shape.center
+  vec2 mid2 = c2.shape.center
+  vec2 direction = normalize(mid2 - mid1)
+
+  scalar offset = cells.paddedMid / 2
+  vec2 offsetVec = direction * offset
+
+  vec2 pos1 = mid1 + offsetVec
+  vec2 pos2 = mid2 - offsetVec
+
+  scalar h1 = mid1[0]
+  scalar h2 = mid2[0]
+  scalar hm = (h1 + h2) / 2
+  
+  scalar v1 = mid1[1]
+  scalar v2 = mid2[1]
+  scalar vm = (v1 + v2) / 2
+  scalar vertDisp = cells.paddedMid * max(abs(direction[1]), 0.1)
+  vec2 mid = (hm, vm + vertDisp)
+
+
+  q.line = Path {
+    name: ""
+    endArrowhead: "concave"
+    d: interpolateQuadraticFromPoints("open", pos1, mid, pos2)
+  }
+}
+
+forall Arrow q
+where highlight(q) {
+  override q.line.strokeColor = colors.red
+  override q.line.strokeWidth = 1.2
+}
+
+forall repeatable Cell c
+where Color(c, r, g, b) {
+  override c.shape.fillColor = rgba(r, g, b, 1)
+}

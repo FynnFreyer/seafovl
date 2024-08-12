@@ -1,0 +1,3 @@
+file-scope: false
+rewrite-path: true
+include-resources: src:app

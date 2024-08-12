@@ -1,0 +1,8 @@
+---
+pandoc-latex-environment:
+  figure: [figure, fig]
+  samepage: [samepage]
+  sfig: [subfigure, subfig]
+  mpig: [minipage]
+  hb: [hbox]
+---

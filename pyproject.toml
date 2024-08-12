@@ -1,0 +1,40 @@
+[project]
+name = 'bachelors_thesis'
+description = 'Implementing a Verifiable Pair-wise Sequence Alignment Model based on Mixed Integer Optimization'
+authors = [
+    { name = 'Freyer, Fynn', email = 'fynn.freyer@student.htw-berlin.de' }
+]
+version = '0.1.0.0'
+readme = 'README.md'
+requires-python = '>=3.10'
+dependencies = [
+    'biopython',
+    'entangled_cli',
+    'matplotlib',
+    'pandas',
+    'pandoc-displaymath2equation',
+    'pandoc-include @ https://github.com/FynnFreyer/pandoc-include/archive/7591604c712c2af806d2a5a2f69d3749ed37c51e.zip#sha256=a3ffe7f45fbbdb2ffba68fec74f107c5ac748f4dbeab202375d7e1f0fb837f6c',
+    'pandoc-latex-environment',
+    'pip-tools',
+]
+
+# these can't be installed via requirements.txt
+[extra-dependencies]
+bin = [
+    'cabal',  #  https://www.haskell.org/
+    'eventlog2html',  # https://hackage.haskell.org/package/eventlog2html
+    'ghc',  #  https://www.haskell.org/
+    'inkscape',  # https://inkscape.org/
+    'pandoc',  # https://pandoc.org/
+    'roger',  # https://penrose.cs.cmu.edu/
+]
+
+
+[tool.entangled]
+version = '2.0'
+watch_list = ['doc/results/03_Implementation.md']
+
+[[tool.entangled.languages]]
+name = 'Cabal file'
+identifiers = ['cabal']
+comment = { open = '--' }

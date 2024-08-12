@@ -1,0 +1,44 @@
+% configure code listings with automatic 
+% softbreaks for lines that are too long
+
+% defines lots of convenience functions, e.g.,
+% allows checking if commands are defined and hooking into environments
+\usepackage{etoolbox}
+
+% provides fancy colored boxes
+% MUST be included before redefining verbatim
+% otherwise it messes up the line breaking
+\usepackage{tcolorbox}
+
+% provides fancier verbatim environments
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+
+% redefine verbatim in terms of fancy verbatim
+% to allow for softbreaks in code that's too long
+
+% plain (w/o highlighting) code
+\renewenvironment{verbatim}
+  {
+    \VerbatimEnvironment%
+    \begin{Verbatim}[breaklines,breakanywhere,commandchars=\\\{\},baselinestretch=1]%
+  }
+  {\end{Verbatim}}
+
+% highlighted code
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\},baselinestretch=1}
+
+
+% discourage breaks in code
+\newenvironment{discouragebreaks}{%
+  \let\oldinterlinepenalty\interlinepenalty%
+  \interlinepenalty=501%
+}{%
+  \interlinepenalty=\oldinterlinepenalty%
+  \undef\oldinterlinepenalty%
+}
+
+\BeforeBeginEnvironment{verbatim}{\begin{discouragebreaks}}  % plain code
+\BeforeBeginEnvironment{Highlighting}{\begin{discouragebreaks}}  % highlighted code
+\AfterEndEnvironment{verbatim}{\end{discouragebreaks}}
+\AfterEndEnvironment{Highlighting}{\end{discouragebreaks}}

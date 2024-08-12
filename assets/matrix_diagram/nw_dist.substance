@@ -1,0 +1,110 @@
+Matrix F
+Dim(F, 6, 5)
+
+RowLabel(F, 1, "-")
+RowLabel(F, 2, "A")
+RowLabel(F, 3, "G")
+RowLabel(F, 4, "T")
+RowLabel(F, 5, "A")
+RowLabel(F, 6, "C")
+
+ColLabel(F, 1, "-")
+ColLabel(F, 2, "A")
+ColLabel(F, 3, "T")
+ColLabel(F, 4, "G")
+ColLabel(F, 5, "C")
+
+Cell f_00, f_01, f_02, f_03, f_04
+Cell f_10, f_11, f_12, f_13, f_14
+Cell f_20, f_21, f_22, f_23, f_24
+Cell f_30, f_31, f_32, f_33, f_34
+Cell f_40, f_41, f_42, f_43, f_44
+Cell f_50, f_51, f_52, f_53, f_54
+
+Elem(f_00, F, 1, 1)
+Elem(f_01, F, 1, 2)
+Elem(f_02, F, 1, 3)
+Elem(f_03, F, 1, 4)
+Elem(f_04, F, 1, 5)
+
+Elem(f_10, F, 2, 1)
+Elem(f_11, F, 2, 2)
+Elem(f_12, F, 2, 3)
+Elem(f_13, F, 2, 4)
+Elem(f_14, F, 2, 5)
+
+Elem(f_20, F, 3, 1)
+Elem(f_21, F, 3, 2)
+Elem(f_22, F, 3, 3)
+Elem(f_23, F, 3, 4)
+Elem(f_24, F, 3, 5)
+
+Elem(f_30, F, 4, 1)
+Elem(f_31, F, 4, 2)
+Elem(f_32, F, 4, 3)
+Elem(f_33, F, 4, 4)
+Elem(f_34, F, 4, 5)
+
+Elem(f_40, F, 5, 1)
+Elem(f_41, F, 5, 2)
+Elem(f_42, F, 5, 3)
+Elem(f_43, F, 5, 4)
+Elem(f_44, F, 5, 5)
+
+Elem(f_50, F, 6, 1)
+Elem(f_51, F, 6, 2)
+Elem(f_52, F, 6, 3)
+Elem(f_53, F, 6, 4)
+Elem(f_54, F, 6, 5)
+
+Value(f_00, "0")
+Value(f_01, "1")
+Value(f_02, "2")
+Value(f_03, "3")
+Value(f_04, "4")
+
+Value(f_10, "1")
+Value(f_11, "0")
+Value(f_12, "1")
+Value(f_13, "2")
+Value(f_14, "3")
+
+Value(f_20, "2")
+Value(f_21, "1")
+Value(f_22, "0")
+Value(f_23, "1")
+Value(f_24, "2")
+
+Value(f_30, "3")
+Value(f_31, "2")
+Value(f_32, "1")
+Value(f_33, "0")
+Value(f_34, "1")
+
+Value(f_40, "4")
+Value(f_41, "3")
+Value(f_42, "2")
+Value(f_43, "1")
+Value(f_44, "0")
+
+Value(f_50, "5")
+Value(f_51, "4")
+Value(f_52, "3")
+Value(f_53, "2")
+Value(f_54, "1")
+
+-- Light color for of out range cells
+Color(f_02, 0.639, 0.694, 0.541)
+Color(f_03, 0.639, 0.694, 0.541)
+Color(f_04, 0.639, 0.694, 0.541)
+Color(f_13, 0.639, 0.694, 0.541)
+Color(f_14, 0.639, 0.694, 0.541)
+Color(f_24, 0.639, 0.694, 0.541)
+Color(f_30, 0.639, 0.694, 0.541)
+Color(f_40, 0.639, 0.694, 0.541)
+Color(f_41, 0.639, 0.694, 0.541)
+Color(f_50, 0.639, 0.694, 0.541)
+Color(f_51, 0.639, 0.694, 0.541)
+Color(f_52, 0.639, 0.694, 0.541)
+
+AutoLabel All

@@ -1,0 +1,29 @@
+<!--
+  Syntax highlighting rules for the GHCi REPL.
+
+  Depends on the Haskell syntax definition by Nicolas Wu (zenzike@gmail.com),
+  which is distributed under the LGPL, and can be found on GitHub at:
+  https://raw.githubusercontent.com/KDE/syntax-highlighting/master/data/syntax/haskell.xml
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="GHC interactive REPL" alternativeNames="GHCi" version="1" kateversion="5.53" section="Sources" mimetype="text/x-ghci" author="Fynn Freyer (fynn.freyer@googlemail.com)" license="LGPL" style="ghci">
+  <highlighting>
+    <contexts>
+      <context attribute="Normal" lineEndContext="#stay" name="repl">
+        <IncludeRules context="FindPrompt" />
+      </context>
+      <context attribute="Normal" lineEndContext="#pop" name="FindPrompt">
+        <StringDetect attribute="Prompt" context="input" String="Prelude> " firstNonSpace="true" />
+        <StringDetect attribute="Prompt" context="input" String="ghci> "    firstNonSpace="true" />
+      </context>
+      <context attribute="Normal" lineEndContext="#pop" name="input">
+        <IncludeRules context="code##Haskell" />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal"  defStyleNum="dsNormal"      />
+      <itemData name="Prompt"  defStyleNum="dsSpecialString" />
+    </itemDatas>
+  </highlighting>
+</language>

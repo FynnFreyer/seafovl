@@ -1,0 +1,28 @@
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage}
+
+\fancypagestyle{numbered}{%
+    \fancyhead{}%
+    \fancyfoot[R]{Seite \thepage}
+}
+
+\fancypagestyle{affidavit}{%
+    \fancyhead[R]{EIGENSTÄNDIGKEITSERKLÄRUNG}%
+    \fancyfoot[]{}
+}
+
+\fancypagestyle{thanks}{%
+    \fancyhead[R]{DANKSAGUNG}%
+    \fancyfoot[R]{Seite \thepage}
+}
+
+\setlength{\headheight}{3ex}
+
+% TODO add information to header and footer
+% provides \thedate, \theauthor, \thetitle even after \maketitle
+% \usepackage{titling}
+% \robustify{\thetitle}
+% \lfoot{\thetitle}

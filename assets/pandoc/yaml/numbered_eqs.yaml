@@ -1,0 +1,3 @@
+number-sections: true
+displaymath2equation:
+  labeled-only: true

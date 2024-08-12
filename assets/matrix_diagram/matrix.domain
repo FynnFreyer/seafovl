@@ -1,0 +1,20 @@
+type Symbol -- an element of a sequence
+type Sequence -- a sequence of symbols
+
+type Cell -- an element of a matrix
+predicate Value(Cell c, String w) -- set a cell value
+predicate Color(Cell c, Number r, Number g, Number b) -- set a cell color
+
+type Matrix -- a 2D array of cells
+predicate Dim(Matrix M, Number m, Number n) -- set matrix size to mxn
+predicate Elem(Cell c, Matrix M, Number i, Number j) -- add cell to matrix at (i,j)
+
+-- set row and col labels
+predicate RowLabel(Matrix M, Number i, String l)
+predicate ColLabel(Matrix M, Number j, String l)
+
+type Arrow -- arrows lead link a cell to another
+predicate highlight(Arrow q) -- highlight an arrow
+
+constructor Step(Cell q, Cell r) -> Arrow -- straight arrow between cells
+constructor Arc(Cell q, Cell r) -> Arrow -- curved arrow between cells

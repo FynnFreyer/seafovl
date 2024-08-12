@@ -1,0 +1,60 @@
+<!--
+  Syntax highlighting rules for the GHCi REPL.
+
+  Depends on the Haskell syntax definition by Nicolas Wu (zenzike@gmail.com),
+  which is distributed under the LGPL, and can be found on GitHub at:
+  https://raw.githubusercontent.com/KDE/syntax-highlighting/master/data/syntax/haskell.xml
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="GHC interactive REPL" alternativeNames="GHCi" version="1" kateversion="5.53" section="Sources" mimetype="text/x-ghci" author="Fynn Freyer (fynn.freyer@googlemail.com)" license="LGPL" style="ghci">
+  <highlighting>
+    <list name="prompt_keywords">
+      <item>Prelude&gt; </item>
+      <item>ghci&gt; </item>
+    </list>
+
+    <contexts>
+      <context attribute="Normal" lineEndContext="#stay" name="repl">
+        <IncludeRules context="FindPrompt" />
+      </context>
+      <context attribute="Normal" lineEndContext="#pop" name="FindPrompt">
+        <StringDetect attribute="Prompt" context="input" String="Prelude> " firstNonSpace="true" />
+        <StringDetect attribute="Prompt" context="input" String="ghci> "    firstNonSpace="true" />
+      </context>
+      <context attribute="Normal" lineEndContext="#pop" name="input">
+        <keyword attribute="Keyword" context="#stay" String="prompt_keywords" />
+        <IncludeRules context="code##Haskell" />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal"  defStyleNum="dsNormal"      />
+      <itemData name="Keyword" defStyleNum="dsKeyword"     />
+      <itemData name="Prompt"  defStyleNum="dsInformation" />
+      <itemData name="String"  defStyleNum="dsString"      />
+    </itemDatas>
+  </highlighting>
+</language>
+<!--
+  Syntax highlighting rules for the GHCi REPL.
+
+  Depends on the Haskell syntax definition by Nicolas Wu (zenzike@gmail.com),
+  which is distributed under the LGPL, and can be found on GitHub at:
+  https://raw.githubusercontent.com/KDE/syntax-highlighting/master/data/syntax/haskell.xml
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="GHC interactive REPL" alternativeNames="GHCi" version="1" kateversion="5.53" section="Sources" mimetype="text/x-ghci" author="Fynn Freyer (fynn.freyer@googlemail.com)" license="LGPL" style="ghci">
+  <highlighting>
+    <contexts>
+      <context name="repl">
+        <StringDetect attribute="Prompt" context="code##Haskell" String="Prelude> " firstNonSpace="true" />
+        <StringDetect attribute="Prompt" context="code##Haskell" String="ghci> "    firstNonSpace="true" />
+        <RegExpr attribute="Normal" String="^.*$" />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Prompt" defStyleNum="dsSpecialString" />
+    </itemDatas>
+  </highlighting>
+</language>

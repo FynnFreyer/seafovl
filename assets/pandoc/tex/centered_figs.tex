@@ -1,0 +1,50 @@
+% provides subfigure environment
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+\newenvironment{fig}{\begin{figure}[H]}{\end{figure}}
+\newenvironment{sfig}{\begin{subfigure}[h]{0.4\linewidth}}{\end{subfigure}}
+\newenvironment{mpig}{\begin{minipage}[c]{0.4\linewidth}}{\end{minipage}}
+
+\newcommand{\pullup}{\vspace{-1.5ex}}
+
+\newcommand{\captiontwo}[1]{%
+    \pullup%
+    \begin{figure}[H]%
+        \caption{#1}%
+    \end{figure}%
+}
+
+\newcommand{\captiontwotwice}[2]{%
+    \pullup%
+    \begin{figure}[H]%
+        \begin{subfigure}[t]{0.45\textwidth}%
+            \caption{#1}%
+        \end{subfigure}%
+        \hfill%
+        \begin{subfigure}[t]{0.45\textwidth}%
+            \caption{#2}%
+        \end{subfigure}%
+    \end{figure}%
+}
+
+\newcommand{\captiontwothrice}[3]{%
+    \pullup%
+    \begin{figure}[H]%
+        \begin{subfigure}[t]{0.45\textwidth}%
+            \caption{#2}%
+        \end{subfigure}%
+        \hfill%
+        \begin{subfigure}[t]{0.45\textwidth}%
+            \caption{#3}%
+        \end{subfigure}%
+        \caption{#1}%
+    \end{figure}%
+}
+
+% make pictures float in the center, right where they are defined
+\usepackage{float}
+\makeatletter
+\def\fps@figure{H}
+\makeatother

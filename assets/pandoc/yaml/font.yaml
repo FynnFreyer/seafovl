@@ -1,0 +1,13 @@
+fontsize: 12
+linestretch: 1.2
+
+# xelatex configuration
+mainfont: Roboto
+
+monofont: Inconsolata
+monofontoptions:
+  - Scale=1.1
+
+mathfont: NewComputerModernMath
+mathfontoptions:
+  - Scale=1.1

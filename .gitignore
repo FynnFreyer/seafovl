@@ -1,0 +1,11 @@
+# sources should be generated from doc/
+src/
+app/
+
+signature.png
+
+*.log
+*.hs
+*.hp
+
+venv/
