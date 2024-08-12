@@ -32,7 +32,7 @@ bin = [
 
 [tool.entangled]
 version = '2.0'
-watch_list = ['doc/results/03_Implementation.md']
+watch_list = ['docs/results/03_Implementation.md']
 
 [[tool.entangled.languages]]
 name = 'Cabal file'
