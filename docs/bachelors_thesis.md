@@ -111,14 +111,14 @@ Hiermit versichere ich an Eides statt durch meine Unterschrift, dass
 \vspace{3cm}
 
 Berlin, den 12.08.2024
-\vspace{1ex}
+\vspace{2ex}
 \hfill
 \begin{minipage}{6cm}
-    \mbox{\includegraphics[height=1.4cm]{signature}}%
-    \vspace{-5pt}
+    \large\textbf{Fynn Freyer}
     \hrule
     \begin{flushleft}
-        \vspace{5pt}
+    	\vspace{2pt}
+    	\normalsize
         Fynn Freyer \\
     \end{flushleft}
 \end{minipage}
